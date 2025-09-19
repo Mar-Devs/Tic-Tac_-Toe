@@ -1,5 +1,5 @@
-
 const Player = (function() {
+    
     let Player1Name = ''
     let Player2Name = ''
 
@@ -15,29 +15,27 @@ const Player = (function() {
 Player.player1()
 Player.player2()
 
-const BoardGame = function(){
+const BoardGame = function(playerName,textcontent){
     let player1Turn = false
     let player2Turn = false
     let boardGameEnteries = []
 
-    for(let i = 0; i < 9; i++){
+        for(let i = 0; i < 9; i++){
         switch(i){
             case 0:
-                player1Turn = true
-                let index0 = prompt(`It's ${Player.Player1Name}'s turn`)
-                let index0Move = [index0, Player.Player1Name]
+                let index0 = textcontent // these are the item1P's value
+                let index0Move = [index0, playerName]
                 boardGameEnteries.push(index0Move)
+                console.log(boardGameEnteries)
                 break;
             case 1:
-                player2Turn = true
-                let index1 = prompt(`It's ${Player.Player2Name}'s turn`)
-                let index1Move = [index1, Player.Player2Name]
+                let index1 = textcontent
+                let index1Move = [index1, playerName]
                 boardGameEnteries.push(index1Move)
                 break;
             case 2:
-                player1Turn = true
-                let index2 = prompt((`It's ${Player.Player1Name}'s turn`))
-                let index2Move = [index2, Player.Player1Name]
+                let index2 = textcontent
+                let index2Move = [index2, playerName]
                 boardGameEnteries.push(index2Move)
                 if ((boardGameEnteries[0][0] === boardGameEnteries[1][0]) && (boardGameEnteries[2][0] === boardGameEnteries[1][0])){
                     console.log(`${boardGameEnteries[0][1]} wins!`)
@@ -45,22 +43,19 @@ const BoardGame = function(){
                 }
                 break;
             case 3:
-                let index3 = prompt(`It's ${Player.Player2Name}'s turn`)
-                player2Turn = true
-                let index3Move = [index3, Player.Player2Name]
+                let index3 = textcontent
+                let index3Move = [index3, playerName]
                 boardGameEnteries.push(index3Move)
                 break;
             case 4:
-                let index4 = prompt(`It's ${Player.Player1Name}'s turn`)
-                player1Turn = true
-                let index4Move = [index4, Player.Player1Name]
+                let index4 = textcontent
+                let index4Move = [index4, playerName]
                 boardGameEnteries.push(index4Move)
                 
                 break;
             case 5:
-                let index5 = prompt(`It's ${Player.Player2Name}'s turn`)
-                player2Turn = true
-                let index5Move = [index5, Player.Player2Name]
+                let index5 = textcontent
+                let index5Move = [index5, playerName]
                 boardGameEnteries.push(index5Move)
                 if ((boardGameEnteries[0][0] === boardGameEnteries[1][0]) && (boardGameEnteries[2][0] === boardGameEnteries[1][0])){
                     console.log(`${boardGameEnteries[0][1]} wins!`)
@@ -73,9 +68,8 @@ const BoardGame = function(){
                 
                 break;
             case 6:
-                let index6 = prompt(`It's ${Player.Player1Name}'s turn`)
-                player2Turn = true
-                let index6Move = [index6, Player.Player1Name]
+                let index6 = textcontent
+                let index6Move = [index6, playerName]
                 boardGameEnteries.push(index6Move)
                 if ((boardGameEnteries[0][0] === boardGameEnteries[3][0]) && (boardGameEnteries[6][0] === boardGameEnteries[3][0])){
                     console.log(`${boardGameEnteries[0][1]} wins!`)
@@ -87,9 +81,8 @@ const BoardGame = function(){
                 }
                 break;
             case 7:
-                let index7 = prompt(`It's ${Player.Player2Name}'s turn`)
-                player2Turn = true
-                let index7Move = [index7, Player.Player2Name]
+                let index7 = textcontent
+                let index7Move = [index7, playerName]
                 boardGameEnteries.push(index7Move)
                 if ((boardGameEnteries[1][0] === boardGameEnteries[4][0]) && (boardGameEnteries[7][0] === boardGameEnteries[4][0])){
                     console.log(`${boardGameEnteries[0][1]} wins!`)
@@ -101,9 +94,8 @@ const BoardGame = function(){
                 }
                 break;
             case 8:
-                let index8 = prompt(`It's ${Player.Player1Name}'s turn`)
-                player1Turn = true
-                let index8Move = [index8, Player.Player1Name]
+                let index8 = textcontent
+                let index8Move = [index8, playerName]
                 boardGameEnteries.push(index8Move)
                 if ((boardGameEnteries[0][0] === boardGameEnteries[4][0]) && (boardGameEnteries[8][0] === boardGameEnteries[4][0])){
                     console.log(`${boardGameEnteries[0][1]} wins!`)
@@ -125,11 +117,7 @@ const BoardGame = function(){
         }
     }
 
-    return boardGameEnteries
-
 }
-
-
 
 const domManipulation = function(){
     const landingPageContainer = document.querySelector(".landingPageContainer")
@@ -174,7 +162,7 @@ const domManipulation = function(){
 
         const boardGame = document.createElement("div")
         boardGame.className = 'boardGame'
-        body.appendChild(boardGame)
+        body.appendChild(boardGame)  
 
         const item1 = document.createElement("div")
         const item1P = document.createElement("p")
@@ -183,29 +171,12 @@ const domManipulation = function(){
         item1.setAttribute('id','item1')
         boardGame.appendChild(item1)
 
-        item1.addEventListener("click",()=>{
-               if(player1Turn === true){
-                item1P.textContent = 'X'
-                boardGameEnteries.splice(0)
-                }
-        })
-
-
         const item2 = document.createElement("div")
         const item2P = document.createElement("p")
         item2.appendChild(item2P)
         item2.className = 'item'
         item2.setAttribute('id','item2')
         boardGame.appendChild(item2)
-
-        item2.addEventListener("click",()=>{
-            if(player1Turn === true){
-                item2P.textContent = 'X'
-            }
-            else if(player2Turn === true){
-                item2P.textContent = 'O'
-            }
-        })
 
         const item3 = document.createElement("div")
         const item3P = document.createElement("p")
@@ -251,15 +222,31 @@ const domManipulation = function(){
 
         const item9 = document.createElement("div")
         const item9P = document.createElement("p")
-        item1.appendChild(item9P)
+        item9.appendChild(item9P)
         item9.className = 'item'
         item9.setAttribute('id','item9')
         boardGame.appendChild(item9)
+
+        let playerOneTurn = false
+        let playerTwoTurn = true
+        let playerChoice = 'X'
+        let isPlaying
+
+            item9.addEventListener("click",()=>{
+                    item9P.textContent = playerChoice
+                    BoardGame(player2Name, playerChoice)
+                })
     })()
     })
 }
 
 domManipulation()
+
+
+
+
+
+
 
 
 
