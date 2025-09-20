@@ -77,6 +77,7 @@ const domManipulation = function(){
     const inputPlayer2 = document.querySelector(".player2name")
     let player1Name = ''
     let player2Name = ''
+    let item1Counter, item2Counter, item3Counter, item4Counter, item5Counter, item6Counter, item7Counter, item8Counter, item9Counter = 0
 
 
     startGameBtn.addEventListener("click",(event)=>{
@@ -106,10 +107,10 @@ const domManipulation = function(){
         body.appendChild(player2NameDisplay)
 
 
-        // const createGameBtn = document.createElement("button")
-        // createGameBtn.textContent = 'Restart Game'
-        // createGameBtn.className = 'restart-game'
-        // body.appendChild(createGameBtn)
+        const createGameBtn = document.createElement("button")
+        createGameBtn.textContent = 'Restart Game'
+        createGameBtn.className = 'restart-game'
+        body.appendChild(createGameBtn)
 
         const boardGame = document.createElement("div")
         boardGame.className = 'boardGame'
@@ -204,7 +205,7 @@ const domManipulation = function(){
             }
             })
 
-            let item2Counter = 0
+
             item2.addEventListener("click",()=>{
                 ++count
                 if(item2Counter === 0){
@@ -368,29 +369,29 @@ const domManipulation = function(){
 
         
 
-            // createGameBtn.addEventListener("click",()=>{
-            //     boardGameEnteries = []
-            //     item1P.textContent = ''
-            //     item2P.textContent = ''
-            //     item3P.textContent = ''
-            //     item4P.textContent = ''
-            //     item5P.textContent = ''
-            //     item6P.textContent = ''
-            //     item7P.textContent = ''
-            //     item8P.textContent = ''
-            //     item9P.textContent = ''
-            //     count = 0
-            //     item1Counter = 0
-            //     item2Counter = 0
-            //     item3Counter = 0
-            //     item4Counter = 0
-            //     item5Counter = 0
-            //     item6Counter = 0
-            //     item7Counter = 0
-            //     item8Counter = 0
-            //     item9Counter = 0
+            createGameBtn.addEventListener("click",()=>{
+                boardGameEnteries = [[],[],[],[],[],[],[],[]]
+                item1P.textContent = ''
+                item2P.textContent = ''
+                item3P.textContent = ''
+                item4P.textContent = ''
+                item5P.textContent = ''
+                item6P.textContent = ''
+                item7P.textContent = ''
+                item8P.textContent = ''
+                item9P.textContent = ''
+                count = 0
+                item1Counter = 0
+                item2Counter = 0
+                item3Counter = 0
+                item4Counter = 0
+                item5Counter = 0
+                item6Counter = 0
+                item7Counter = 0
+                item8Counter = 0
+                item9Counter = 0
 
-            // })
+            })
 
     }
         
