@@ -1,26 +1,18 @@
 
 function BoardGame(boardGameEnteries){
-
-            if(((boardGameEnteries[0][0] === ('X')) || (boardGameEnteries[0][0] === ('O'))) && ((boardGameEnteries[2][0] === ('X')) || (boardGameEnteries[2][0] === ('O')) ) && ((boardGameEnteries[1][0] === ('X')) || (boardGameEnteries[1][0] === ('O')))){
-                if ((boardGameEnteries[0][0] === boardGameEnteries[1][0]) && (boardGameEnteries[2][0] === boardGameEnteries[1][0])){
-                    alert(`${boardGameEnteries[0][1]} is the winner!`)
-                            
-            }
-        }
-            
                 
                 if(((boardGameEnteries[0][0] === ('X')) || (boardGameEnteries[0][0] === ('O'))) && ((boardGameEnteries[1][0] === ('X')) || (boardGameEnteries[1][0] === ('O')) ) && ((boardGameEnteries[2][0] === ('X')) || (boardGameEnteries[2][0] === ('O')))){
                           if ((boardGameEnteries[0][0] === boardGameEnteries[1][0]) && (boardGameEnteries[2][0] === boardGameEnteries[1][0])){
                               alert(`${boardGameEnteries[0][1]} is the winner!`)
                 }
             }
-               else if(((boardGameEnteries[3][0] === ('X')) || (boardGameEnteries[3][0] === ('O'))) && ((boardGameEnteries[4][0] === ('X')) || (boardGameEnteries[4][0] === ('O')) ) && ((boardGameEnteries[5][0] === ('X')) || (boardGameEnteries[5][0] === ('O')))){
+                else if(((boardGameEnteries[3][0] === ('X')) || (boardGameEnteries[3][0] === ('O'))) && ((boardGameEnteries[4][0] === ('X')) || (boardGameEnteries[4][0] === ('O')) ) && ((boardGameEnteries[5][0] === ('X')) || (boardGameEnteries[5][0] === ('O')))){
                         if ((boardGameEnteries[3][0] === boardGameEnteries[4][0]) && (boardGameEnteries[5][0] === boardGameEnteries[4][0])){
                                  alert(`${boardGameEnteries[3][1]} is the winner!`)
                 }
             }
                 
-                if(((boardGameEnteries[0][0] === ('X')) || (boardGameEnteries[0][0] === ('O'))) && ((boardGameEnteries[3][0] === ('X')) || (boardGameEnteries[3][0] === ('O')) ) && ((boardGameEnteries[6][0] === ('X')) || (boardGameEnteries[6][0] === ('O')))){
+                else if(((boardGameEnteries[0][0] === ('X')) || (boardGameEnteries[0][0] === ('O'))) && ((boardGameEnteries[3][0] === ('X')) || (boardGameEnteries[3][0] === ('O')) ) && ((boardGameEnteries[6][0] === ('X')) || (boardGameEnteries[6][0] === ('O')))){
                         if ((boardGameEnteries[0][0] === boardGameEnteries[3][0]) && (boardGameEnteries[6][0] === boardGameEnteries[3][0])){
                                 alert(`${boardGameEnteries[0][1]} is the winner!`)
                                 
@@ -33,7 +25,7 @@ function BoardGame(boardGameEnteries){
                 }
             }
                
-                if(((boardGameEnteries[1][0] === ('X')) || (boardGameEnteries[1][0] === ('O'))) && ((boardGameEnteries[4][0] === ('X')) || (boardGameEnteries[4][0] === ('O')) ) && ((boardGameEnteries[7][0] === ('X')) || (boardGameEnteries[7][0] === ('O')))){
+                else if(((boardGameEnteries[1][0] === ('X')) || (boardGameEnteries[1][0] === ('O'))) && ((boardGameEnteries[4][0] === ('X')) || (boardGameEnteries[4][0] === ('O')) ) && ((boardGameEnteries[7][0] === ('X')) || (boardGameEnteries[7][0] === ('O')))){
                      if ((boardGameEnteries[1][0] === boardGameEnteries[4][0]) && (boardGameEnteries[7][0] === boardGameEnteries[4][0])){
                             alert(`${boardGameEnteries[1][1]} is the winner!`)
                           
@@ -45,8 +37,8 @@ function BoardGame(boardGameEnteries){
                 }
             }
                
-                if(((boardGameEnteries[0][0] === ('X')) || (boardGameEnteries[0][0] === ('O'))) && ((boardGameEnteries[4][0] === ('X')) || (boardGameEnteries[4][0] === ('O')) ) && ((boardGameEnteries[8][0] === ('X')) || (boardGameEnteries[8][0] === ('O')))){
-                        if ((boardGameEnteries[0][0] === boardGameEnteries[4][0]) && (boardGameEnteries[8][0] === boardGameEnteries[4][0])){
+                else if(((boardGameEnteries[0][0] === ('X')) || (boardGameEnteries[0][0] === ('O'))) && ((boardGameEnteries[4][0] === ('X')) || (boardGameEnteries[4][0] === ('O')) ) && ((boardGameEnteries[8][0] === ('X')) || (boardGameEnteries[8][0] === ('O')))){
+                        if ((boardGameEnteries[0][0] === boardGameEnteries[4][0]) && (boardGameEnteries[4][0] === boardGameEnteries[8][0])){
                               alert(`${boardGameEnteries[0][1]} is the winner!`)
                 }
             }
