@@ -1,90 +1,74 @@
 
 function BoardGame(boardGameEnteries){
-    // const length = 8
-    // let boardGameEnteries = new Array(length)
-    // boardGameEnteries = returnedArray
 
-        for(let i = 0; i < 9; i++){
-        switch(i){
-            case 2:
-                if((boardGameEnteries[0][0] === 'X' || 'O') && (boardGameEnteries[2][0] === 'X' || 'O') && (boardGameEnteries[1][0] === 'X' || 'O')  ){
+                if((boardGameEnteries[0][0] === ('X' || 'O')) && (boardGameEnteries[2][0] === ('X' || 'O')) && (boardGameEnteries[1][0] === ('X' || 'O'))  ){
                     if ((boardGameEnteries[0][0] === boardGameEnteries[1][0]) && (boardGameEnteries[2][0] === boardGameEnteries[1][0])){
                               console.log(`${boardGameEnteries[0][1]} wins!`)
-                              console.log("HELLOOOO")
-                               i = 9
+                               winner()
                 }
             }
             
-                break;
-            case 5:
+                
                 if(boardGameEnteries[0][0] != undefined && boardGameEnteries[1][0] != undefined && boardGameEnteries[2][0] != undefined){
                           if ((boardGameEnteries[0][0] === boardGameEnteries[1][0]) && (boardGameEnteries[2][0] === boardGameEnteries[1][0])){
                                console.log(`${boardGameEnteries[0][1]} wins!`)
-                                i = 9 
+                               winner()
                 }
             }
                else if(boardGameEnteries[3][0] != undefined && boardGameEnteries[4][0] != undefined && boardGameEnteries[5][0] != undefined){
                         if ((boardGameEnteries[3][0] === boardGameEnteries[4][0]) && (boardGameEnteries[5][0] === boardGameEnteries[4][0])){
                                  console.log(`${boardGameEnteries[3][1]} wins!`)
-                                 i = 9
+                                 winner()
                 }
             }
-                break;
-            case 6:
+                
                 if(boardGameEnteries[0][0] != undefined && boardGameEnteries[3][0] != undefined && boardGameEnteries[6][0] != undefined){
                         if ((boardGameEnteries[0][0] === boardGameEnteries[3][0]) && (boardGameEnteries[6][0] === boardGameEnteries[3][0])){
                                 console.log(`${boardGameEnteries[0][1]} wins!`)
-                                i = 9
+                                winner()
                 }
             }
                 else if(boardGameEnteries[2][0] != undefined && boardGameEnteries[4][0] != undefined && boardGameEnteries[6][0] != undefined){
                         if ((boardGameEnteries[2][0] === boardGameEnteries[4][0]) && (boardGameEnteries[6][0] === boardGameEnteries[4][0])){
                                console.log(`${boardGameEnteries[2][1]} wins!`)
-                                i = 9
+                               winner()
                 }
             }
-                break;
-            case 7:
+               
                 if(boardGameEnteries[1][0] != undefined && boardGameEnteries[4][0] != undefined && boardGameEnteries[7][0] != undefined){
                      if ((boardGameEnteries[1][0] === boardGameEnteries[4][0]) && (boardGameEnteries[7][0] === boardGameEnteries[4][0])){
                             console.log(`${boardGameEnteries[0][1]} wins!`)
-                             i = 9
+                            winner()
                 }
             }
                 else if(boardGameEnteries[2][0] != undefined && boardGameEnteries[4][0] != undefined && boardGameEnteries[7][0] != undefined){
                       if ((boardGameEnteries[2][0] === boardGameEnteries[4][0]) && (boardGameEnteries[7][0] === boardGameEnteries[4][0])){
                                      console.log(`${boardGameEnteries[0][2]} wins!`)
-                                       i = 9
+                                     winner()
                 }
             }
-                break;
-            case 8:
+               
                 if(boardGameEnteries[0][0] != undefined && boardGameEnteries[4][0] != undefined && boardGameEnteries[8][0] != undefined){
                         if ((boardGameEnteries[0][0] === boardGameEnteries[4][0]) && (boardGameEnteries[8][0] === boardGameEnteries[4][0])){
                               console.log(`${boardGameEnteries[0][1]} wins!`)
-                               i = 9
+                              winner()
                 }
             }
                 else if(boardGameEnteries[2][0] != undefined && boardGameEnteries[5][0] != undefined && boardGameEnteries[8][0] != undefined){
 
                           if ((boardGameEnteries[2][0] === boardGameEnteries[5][0]) && (boardGameEnteries[8][0] === boardGameEnteries[5][0])){
-                               alert(`${boardGameEnteries[2][1]} wins!`)
-                               i = 9
+                               winner()
                 }
             }
                 else if(boardGameEnteries[6][0] != undefined && boardGameEnteries[7][0] != undefined && boardGameEnteries[8][0] != undefined){
                            if ((boardGameEnteries[6][0] === boardGameEnteries[7][0]) && (boardGameEnteries[8][0] === boardGameEnteries[7][0])){
-                                 alert(`${boardGameEnteries[6][1]} wins!`)
-                                  i = 9
+                                 winner()
                 }
             }
-                break;
-
-            default:
-                
+              
         }
-    }
-}
+    
+
 
 
 const domManipulation = function(){
@@ -195,77 +179,230 @@ const domManipulation = function(){
         item9.setAttribute('id','item9')
         boardGame.appendChild(item9)
 
-        const boardGameEnteries = [[],[],[],[],[],[],[],[]]
+        let boardGameEnteries = [[],[],[],[],[],[],[],[]]
+
+        function eventListeners(){
+            let xORo
+            let isPlayingName
+            let count = 0
+
+            let item1Counter = 0
+            item1.addEventListener("click",()=>{ 
+                ++count
+                if(item1Counter === 0){
+                    ++item1Counter
+                   if (count % 2 === 0){
+                       item1P.textContent = 'O'
+                       item1array = ['O', player2Name]
+                       boardGameEnteries.splice(0,1,item1array)
+                       console.log(boardGameEnteries)
+                       BoardGame(boardGameEnteries)
+                }
+                else if(count % 2 !== 0){
+                item1P.textContent = 'X'
+                item1array = ['X', player1Name]
+                boardGameEnteries.splice(0,1,item1array)
+                console.log(boardGameEnteries)
+                BoardGame(boardGameEnteries)
+                }
+            }
+            })
+
+            let item2Counter = 0
+            item2.addEventListener("click",()=>{
+                ++count
+                if(item2Counter === 0){
+                    ++item2Counter
+                    if(count % 2 === 0){
+                       item2P.textContent = 'O'
+                       item2array = ['O', player2Name]
+                       boardGameEnteries.splice(1,1,item2array)
+                       BoardGame(boardGameEnteries)
+                     }
+                     else if(count % 2 !== 0){
+                        item2P.textContent = 'X'
+                        item2array = ['X', player1Name]
+                        boardGameEnteries.splice(1,1,item2array)
+                        BoardGame(boardGameEnteries)
+
+                     }
+            }
+            })
+
+            let item3Counter = 0
+            item3.addEventListener("click",()=>{
+                ++count
+                if(item3Counter === 0){
+                    ++item3Counter
+                    if(count % 2 === 0){
+                         item3P.textContent = 'O'
+                         item3array = ['O', player2Name]
+                         boardGameEnteries.splice(2,1,item3array)
+                         BoardGame(boardGameEnteries)
+                    }
+                    else if(count % 2 !== 0){
+                        item3P.textContent = 'X'
+                         item3array = ['X', player1Name]
+                         boardGameEnteries.splice(2,1,item3array)
+                         BoardGame(boardGameEnteries)
+                    }
+                 
+                }
+            })
+
+            let item4Counter = 0
+            item4.addEventListener("click",()=>{
+                ++count
+                if(item4Counter === 0){
+                    ++item4Counter
+                    if(count % 2 === 0){
+                       item4P.textContent = 'O'
+                       item4array = ['O', player2Name]
+                       boardGameEnteries.splice(3,1,item4array)
+                       BoardGame(boardGameEnteries)
+                    }
+                    else if(count % 2 !== 0){
+                       item4P.textContent = 'X'
+                       item4array = ['X', player1Name]
+                       boardGameEnteries.splice(3,1,item4array)
+                       BoardGame(boardGameEnteries)
+                    }
+                }
+            })
+
+            let item5Counter = 0
+            item5.addEventListener("click",()=>{
+                ++count
+                if(item5Counter === 0){
+                    ++item5Counter
+                    if(count % 2 === 0){
+                      item5P.textContent = 'O'
+                      item5array = ['O', player2Name]
+                      boardGameEnteries.splice(4,1,item5array)
+                      BoardGame(boardGameEnteries)
+                    }
+                    else if(count % 2 !== 0){
+                      item5P.textContent = 'X'
+                      item5array = ['X', player1Name]
+                      boardGameEnteries.splice(4,1,item5array)
+                      BoardGame(boardGameEnteries)
+                    }
+                }
+            })
+
+            let item6Counter = 0
+            item6.addEventListener("click",()=>{
+                ++count 
+                if(item6Counter === 0){
+                    ++item6Counter
+                    if(count % 2 === 0){
+                       item6P.textContent = 'O'
+                       item6array = ['O', player2Name]
+                       boardGameEnteries.splice(5,1,item6array)
+                       BoardGame(boardGameEnteries)
+                    }
+                    else if(count % 2 !== 0){
+                       item6P.textContent = 'X'
+                       item6array = ['X', player1Name]
+                       boardGameEnteries.splice(5,1,item6array)
+                       BoardGame(boardGameEnteries)
+                    }
+                }
+            })
+
+            let item7Counter = 0
+            item7.addEventListener("click",()=>{
+                ++count
+                if(item7Counter === 0){
+                    ++item7Counter
+                    if(count % 2 === 0){
+                      item7P.textContent = 'O'
+                      item7array = ['O', player2Name]
+                      boardGameEnteries.splice(6,1,item7array)
+                      BoardGame(boardGameEnteries)
+                    }
+                    else if (count % 2 !== 0){
+                      item7P.textContent = 'X'
+                      item7array = ['X', player1Name]
+                      boardGameEnteries.splice(6,1,item7array)
+                      BoardGame(boardGameEnteries)
+                    }
+                }
+            })
+
+
+            let item8Counter = 0
+            item8.addEventListener("click",()=>{
+                ++count
+                if(item8Counter === 0){
+                    ++item8Counter
+                    if(count % 2 === 0){
+                          item8P.textContent = 'O'
+                          item8array = ['O', player2Name]
+                          boardGameEnteries.splice(7,1,item8array)
+                          BoardGame(boardGameEnteries)
+                    }
+                    else if(count % 2 !== 0){
+                          item8P.textContent = 'X'
+                          item8array = ['X', player1Name]
+                          boardGameEnteries.splice(7,1,item8array)
+                          BoardGame(boardGameEnteries)
+                    }
+                }
+            })
+            let item9Counter = 0
+            item9.addEventListener("click",()=>{
+                ++count
+                if(item9Counter === 0){
+                    ++item9Counter
+                    if(count % 2 === 0){
+                        item9P.textContent = 'O'
+                        item9array = ['O', player2Name]
+                        boardGameEnteries.splice(8,1,item9array)
+                        BoardGame(boardGameEnteries)
+                      }
+                   else if(count % 2 !== 0){
+                        item9P.textContent = 'O'
+                        item9array = ['O', player2Name]
+                        boardGameEnteries.splice(8,1,item9array)
+                        BoardGame(boardGameEnteries)
+                }
+            }
+            })
+
+            createGameBtn.addEventListener("click",()=>{
+                boardGameEnteries = []
+                item1P.textContent = ''
+                item2P.textContent = ''
+                item3P.textContent = ''
+                item4P.textContent = ''
+                item5P.textContent = ''
+                item6P.textContent = ''
+                item7P.textContent = ''
+                item8P.textContent = ''
+                item9P.textContent = ''
+                count = 0
+                item1Counter = 0
+                item2Counter = 0
+                item3Counter = 0
+                item4Counter = 0
+                item5Counter = 0
+                item6Counter = 0
+                item7Counter = 0
+                item8Counter = 0
+                item9Counter = 0
+
+            })
+
+    }
+        
+            
         let playerInput = ''
         let player1Turn = false
         let player2Turn = true
 
-        function eventListeners(xORo,isPlayingName){
-            item1.addEventListener("click",()=>{
-                item1P.textContent = xORo
-                item1array = [xORo, isPlayingName]
-                boardGameEnteries.splice(0,1,item1array)
-            })
-
-            item2.addEventListener("click",()=>{
-                item2P.textContent = xORo
-                item2array = [xORo, isPlayingName]
-                boardGameEnteries.splice(1,1,item2array)
-            })
-
-            item3.addEventListener("click",()=>{
-                item3P.textContent = xORo
-                item3array = [xORo, isPlayingName]
-                boardGameEnteries.splice(2,1,item3array)
-            })
-
-            item4.addEventListener("click",()=>{
-                item4P.textContent = xORo
-                item4array = [xORo, isPlayingName]
-                boardGameEnteries.splice(3,1,item4array)
-            })
-
-            item5.addEventListener("click",()=>{
-                item5P.textContent = xORo
-                item5array = [xORo, isPlayingName]
-                boardGameEnteries.splice(4,1,item5array)
-            })
-
-            item6.addEventListener("click",()=>{
-                item6P.textContent = xORo
-                item6array = [xORo, isPlayingName]
-                boardGameEnteries.splice(5,1,item6array)
-            })
-
-            item7.addEventListener("click",()=>{
-                item7P.textContent = xORo
-                item7array = [xORo, isPlayingName]
-                boardGameEnteries.splice(6,1,item7array)
-            })
-
-            item8.addEventListener("click",()=>{
-                item8P.textContent = xORo
-                item8array = [xORo, isPlayingName]
-                boardGameEnteries.splice(7,1,item8array)
-            })
-            let item9Counter = 0
-            item9.addEventListener("click",()=>{
-                if(item9Counter === 0){
-                    ++item9Counter
-                item9P.textContent = xORo
-                item9array = [xORo, isPlayingName]
-                boardGameEnteries.splice(8,1,item9array)
-                console.log(boardGameEnteries)
-                }
-                else{
-                    console.log(boardGameEnteries)
-                }
-            })
-            BoardGame(boardGameEnteries)
-
-    }
         
-            eventListeners('M','Juliette')
+        eventListeners()
         
         
     })()

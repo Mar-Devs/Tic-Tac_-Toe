@@ -1,5 +1,4 @@
-const length = 8
-const arr = new Array(length)
-
-arr.map(()=> new Array(length))
+let arr = [1,2,3,4]
+console.log(arr)
+arr = []
 console.log(arr)
