@@ -1,71 +1,67 @@
 
 function BoardGame(boardGameEnteries){
 
-                if((boardGameEnteries[0][0] === ('X' || 'O')) && (boardGameEnteries[2][0] === ('X' || 'O')) && (boardGameEnteries[1][0] === ('X' || 'O'))  ){
-                    if ((boardGameEnteries[0][0] === boardGameEnteries[1][0]) && (boardGameEnteries[2][0] === boardGameEnteries[1][0])){
-                              console.log(`${boardGameEnteries[0][1]} wins!`)
-                               winner()
-                }
+            if(((boardGameEnteries[0][0] === ('X')) || (boardGameEnteries[0][0] === ('O'))) && ((boardGameEnteries[2][0] === ('X')) || (boardGameEnteries[2][0] === ('O')) ) && ((boardGameEnteries[1][0] === ('X')) || (boardGameEnteries[1][0] === ('O')))){
+                if ((boardGameEnteries[0][0] === boardGameEnteries[1][0]) && (boardGameEnteries[2][0] === boardGameEnteries[1][0])){
+                    alert(`${boardGameEnteries[0][1]} is the winner!`)
+                            
             }
+        }
             
                 
-                if(boardGameEnteries[0][0] != undefined && boardGameEnteries[1][0] != undefined && boardGameEnteries[2][0] != undefined){
+                if(((boardGameEnteries[0][0] === ('X')) || (boardGameEnteries[0][0] === ('O'))) && ((boardGameEnteries[1][0] === ('X')) || (boardGameEnteries[1][0] === ('O')) ) && ((boardGameEnteries[2][0] === ('X')) || (boardGameEnteries[2][0] === ('O')))){
                           if ((boardGameEnteries[0][0] === boardGameEnteries[1][0]) && (boardGameEnteries[2][0] === boardGameEnteries[1][0])){
-                               console.log(`${boardGameEnteries[0][1]} wins!`)
-                               winner()
+                              alert(`${boardGameEnteries[0][1]} is the winner!`)
                 }
             }
-               else if(boardGameEnteries[3][0] != undefined && boardGameEnteries[4][0] != undefined && boardGameEnteries[5][0] != undefined){
+               else if(((boardGameEnteries[3][0] === ('X')) || (boardGameEnteries[3][0] === ('O'))) && ((boardGameEnteries[4][0] === ('X')) || (boardGameEnteries[4][0] === ('O')) ) && ((boardGameEnteries[5][0] === ('X')) || (boardGameEnteries[5][0] === ('O')))){
                         if ((boardGameEnteries[3][0] === boardGameEnteries[4][0]) && (boardGameEnteries[5][0] === boardGameEnteries[4][0])){
-                                 console.log(`${boardGameEnteries[3][1]} wins!`)
-                                 winner()
+                                 alert(`${boardGameEnteries[3][1]} is the winner!`)
                 }
             }
                 
-                if(boardGameEnteries[0][0] != undefined && boardGameEnteries[3][0] != undefined && boardGameEnteries[6][0] != undefined){
+                if(((boardGameEnteries[0][0] === ('X')) || (boardGameEnteries[0][0] === ('O'))) && ((boardGameEnteries[3][0] === ('X')) || (boardGameEnteries[3][0] === ('O')) ) && ((boardGameEnteries[6][0] === ('X')) || (boardGameEnteries[6][0] === ('O')))){
                         if ((boardGameEnteries[0][0] === boardGameEnteries[3][0]) && (boardGameEnteries[6][0] === boardGameEnteries[3][0])){
-                                console.log(`${boardGameEnteries[0][1]} wins!`)
-                                winner()
+                                alert(`${boardGameEnteries[0][1]} is the winner!`)
+                                
                 }
             }
-                else if(boardGameEnteries[2][0] != undefined && boardGameEnteries[4][0] != undefined && boardGameEnteries[6][0] != undefined){
+                else if(((boardGameEnteries[2][0] === ('X')) || (boardGameEnteries[2][0] === ('O'))) && ((boardGameEnteries[4][0] === ('X')) || (boardGameEnteries[4][0] === ('O')) ) && ((boardGameEnteries[6][0] === ('X')) || (boardGameEnteries[6][0] === ('O')))){
                         if ((boardGameEnteries[2][0] === boardGameEnteries[4][0]) && (boardGameEnteries[6][0] === boardGameEnteries[4][0])){
-                               console.log(`${boardGameEnteries[2][1]} wins!`)
-                               winner()
+                               alert(`${boardGameEnteries[2][1]} is the winner!`)
+                              
                 }
             }
                
-                if(boardGameEnteries[1][0] != undefined && boardGameEnteries[4][0] != undefined && boardGameEnteries[7][0] != undefined){
+                if(((boardGameEnteries[1][0] === ('X')) || (boardGameEnteries[1][0] === ('O'))) && ((boardGameEnteries[4][0] === ('X')) || (boardGameEnteries[4][0] === ('O')) ) && ((boardGameEnteries[7][0] === ('X')) || (boardGameEnteries[7][0] === ('O')))){
                      if ((boardGameEnteries[1][0] === boardGameEnteries[4][0]) && (boardGameEnteries[7][0] === boardGameEnteries[4][0])){
-                            console.log(`${boardGameEnteries[0][1]} wins!`)
-                            winner()
+                            alert(`${boardGameEnteries[1][1]} is the winner!`)
+                          
                 }
             }
-                else if(boardGameEnteries[2][0] != undefined && boardGameEnteries[4][0] != undefined && boardGameEnteries[7][0] != undefined){
+                else if(((boardGameEnteries[2][0] === ('X')) || (boardGameEnteries[2][0] === ('O'))) && ((boardGameEnteries[4][0] === ('X')) || (boardGameEnteries[4][0] === ('O')) ) && ((boardGameEnteries[7][0] === ('X')) || (boardGameEnteries[7][0] === ('O')))){
                       if ((boardGameEnteries[2][0] === boardGameEnteries[4][0]) && (boardGameEnteries[7][0] === boardGameEnteries[4][0])){
-                                     console.log(`${boardGameEnteries[0][2]} wins!`)
-                                     winner()
+                                     alert(`${boardGameEnteries[2][1]} is the winner!`)
                 }
             }
                
-                if(boardGameEnteries[0][0] != undefined && boardGameEnteries[4][0] != undefined && boardGameEnteries[8][0] != undefined){
+                if(((boardGameEnteries[0][0] === ('X')) || (boardGameEnteries[0][0] === ('O'))) && ((boardGameEnteries[4][0] === ('X')) || (boardGameEnteries[4][0] === ('O')) ) && ((boardGameEnteries[8][0] === ('X')) || (boardGameEnteries[8][0] === ('O')))){
                         if ((boardGameEnteries[0][0] === boardGameEnteries[4][0]) && (boardGameEnteries[8][0] === boardGameEnteries[4][0])){
-                              console.log(`${boardGameEnteries[0][1]} wins!`)
-                              winner()
+                              alert(`${boardGameEnteries[0][1]} is the winner!`)
                 }
             }
-                else if(boardGameEnteries[2][0] != undefined && boardGameEnteries[5][0] != undefined && boardGameEnteries[8][0] != undefined){
+                else if(((boardGameEnteries[2][0] === ('X')) || (boardGameEnteries[2][0] === ('O'))) && ((boardGameEnteries[5][0] === ('X')) || (boardGameEnteries[5][0] === ('O')) ) && ((boardGameEnteries[8][0] === ('X')) || (boardGameEnteries[8][0] === ('O')))){
 
                           if ((boardGameEnteries[2][0] === boardGameEnteries[5][0]) && (boardGameEnteries[8][0] === boardGameEnteries[5][0])){
-                               winner()
+                            alert(`${boardGameEnteries[2][1]} is the winner!`)
                 }
             }
-                else if(boardGameEnteries[6][0] != undefined && boardGameEnteries[7][0] != undefined && boardGameEnteries[8][0] != undefined){
+                else if(((boardGameEnteries[6][0] === ('X')) || (boardGameEnteries[6][0] === ('O'))) && ((boardGameEnteries[7][0] === ('X')) || (boardGameEnteries[7][0] === ('O')) ) && ((boardGameEnteries[8][0] === ('X')) || (boardGameEnteries[8][0] === ('O')))){
                            if ((boardGameEnteries[6][0] === boardGameEnteries[7][0]) && (boardGameEnteries[8][0] === boardGameEnteries[7][0])){
-                                 winner()
+                            alert(`${boardGameEnteries[6][1]} is the winner!`)
                 }
             }
-              
+             
         }
     
 
@@ -76,6 +72,8 @@ const domManipulation = function(){
     const startGameBtn = document.querySelector(".startGame")
     const inputPlayer1 = document.querySelector(".player1name")
     const inputPlayer2 = document.querySelector(".player2name")
+    let player1Turn = false
+    let player2Turn = true
     let player1Name = ''
     let player2Name = ''
 
@@ -105,6 +103,15 @@ const domManipulation = function(){
         player2NameDisplay.className = 'player2NameDisplay'
         player2NameDisplay.textContent = player2Name
         body.appendChild(player2NameDisplay)
+
+        function playerTurn(count){
+            if (count % 2 === 0){
+                player1NameDisplay.style.animation = 'flicker2 0.5s infinite alternate'
+            }
+            else if(count % 2 !== 0){
+                player2NameDisplay.style.animation = 'flicker2 0.5s infinite alternate'
+            }
+        }
 
 
         const createGameBtn = document.createElement("button")
@@ -185,7 +192,7 @@ const domManipulation = function(){
             let xORo
             let isPlayingName
             let count = 0
-
+            let declare = ''
             let item1Counter = 0
             item1.addEventListener("click",()=>{ 
                 ++count
@@ -198,12 +205,12 @@ const domManipulation = function(){
                        console.log(boardGameEnteries)
                        BoardGame(boardGameEnteries)
                 }
-                else if(count % 2 !== 0){
-                item1P.textContent = 'X'
-                item1array = ['X', player1Name]
-                boardGameEnteries.splice(0,1,item1array)
-                console.log(boardGameEnteries)
-                BoardGame(boardGameEnteries)
+                   else if(count % 2 !== 0){
+                       item1P.textContent = 'X'
+                       item1array = ['X', player1Name]
+                       boardGameEnteries.splice(0,1,item1array)
+                       console.log(boardGameEnteries)
+                       BoardGame(boardGameEnteries)
                 }
             }
             })
@@ -239,12 +246,16 @@ const domManipulation = function(){
                          item3array = ['O', player2Name]
                          boardGameEnteries.splice(2,1,item3array)
                          BoardGame(boardGameEnteries)
+                         declare = BoardGame()
+                        alert(declare)
                     }
                     else if(count % 2 !== 0){
                         item3P.textContent = 'X'
                          item3array = ['X', player1Name]
                          boardGameEnteries.splice(2,1,item3array)
                          BoardGame(boardGameEnteries)
+                         declare = BoardGame()
+                         console.log(declare)
                     }
                  
                 }
@@ -362,13 +373,15 @@ const domManipulation = function(){
                         BoardGame(boardGameEnteries)
                       }
                    else if(count % 2 !== 0){
-                        item9P.textContent = 'O'
-                        item9array = ['O', player2Name]
+                        item9P.textContent = 'X'
+                        item9array = ['X', player1Name]
                         boardGameEnteries.splice(8,1,item9array)
                         BoardGame(boardGameEnteries)
                 }
             }
             })
+
+        
 
             createGameBtn.addEventListener("click",()=>{
                 boardGameEnteries = []

@@ -176,6 +176,35 @@ button{
   }
 }
 
+@keyframes flicker2{
+    100% {
+    text-shadow:
+      0 0 6px #fff,
+      0 0 6px #fff,
+      0 0 6px #fff,
+      0 0 60px var(--neon-text-color),
+      0 0 60px var(--neon-text-color),
+      0 0 30px var(--neon-text-color),
+      0 0 15px var(--neon-text-color),
+      0 0 45px var(--neon-text-color);
+  }
+ 0% {
+    text-shadow:
+    0 0 15px #9ad4db,
+    0 0 15px #9ad4db,
+    0 0 15px #9ad4db,
+
+    0 0 60px var(--neon-text-color),
+    0 0 60px var(--neon-text-color),
+    0 0 30px var(--neon-text-color),
+    0 0 90px var(--neon-text-color),
+    0 0 15px var(--neon-text-color);
+  }
+}
+
+
+
+
 @keyframes flickerInput{
     100% {
     box-shadow:
@@ -277,7 +306,6 @@ button{
     0 0 10px var(--neon-text-color),
     0 0 30px var(--neon-text-color),
     0 0 5px var(--neon-text-color);
-    animation: flicker 0.5s   infinite alternate ;
 }
 
 .player2NameDisplay{
@@ -285,7 +313,7 @@ button{
     grid-row: 4/5;
     font-size: var(--large-font-size);
     text-shadow: 
-    0 0 5px #9ad4db,                              /* the animations will be added through JS based the bool player's turn */
+    0 0 5px #9ad4db,                              
     0 0 5px #9ad4db,
     0 0 5px #9ad4db,
 
@@ -294,7 +322,6 @@ button{
     0 0 10px var(--neon-text-color),
     0 0 30px var(--neon-text-color),
     0 0 5px var(--neon-text-color);
-    animation: flicker 0.5s   infinite alternate ;
 }
 
 @media (max-width: 960px) and (min-width: 620px){
