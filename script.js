@@ -1,28 +1,16 @@
 
 function BoardGame(boardGameEnteries){
-    let winnerName = ''
     let gameOnGoing = true
 
-    function winner(){
-        boardGame.style.filter = 'blur(10px)'
-        boardGame.style.position = 'absloute'
-        boardGame.style.zIndex = '1'
-        const winnerDisplay = document.createElement("h1")
-        winnerDisplay.style.position = 'absloute'
-        winnerDisplay.style.zIndex = '2'
-        boardGame.appendChild(winnerDisplay)
-        winnerDisplay.textContent = `${winnerName} is the winner!`
-    }
 
     for(let i = 0; i < 9; i++){
         switch(i){
             case 2:
                 if(boardGameEnteries?.[0][0] && boardGameEnteries?.[1][0] && boardGameEnteries?.[2][0]){
                     if(boardGameEnteries[0][0] === boardGameEnteries[1][0] && boardGameEnteries[1][0] === boardGameEnteries[2][0]){
-                        alert("winner")
-                        winner()
-                        gameOnGoing = false
                         winnerName = boardGameEnteries[0][1]
+                        alert(`${winnerName} wins!`)
+
                     }
                 }
                 break;
@@ -37,14 +25,14 @@ function BoardGame(boardGameEnteries){
             case 6:
                 if(boardGameEnteries?.[0][0] && boardGameEnteries?.[3][0] && boardGameEnteries?.[6][0]){
                     if(boardGameEnteries[0][0] === boardGameEnteries[3][0] && boardGameEnteries[3][0] === boardGameEnteries[6][0]){
-                        alert("winner")
                         winnerName = boardGameEnteries[0][0]
+                        alert(`${winnerName} wins!`)
                     }
                 }
                 if(boardGameEnteries?.[2][0] && boardGameEnteries?.[4][0] && boardGameEnteries?.[6][0]){
                     if(boardGameEnteries[2][0] === boardGameEnteries[4][0] && boardGameEnteries[4][0] === boardGameEnteries[6][0]){
-                        alert("winner")
                         winnerName = boardGameEnteries[2][0]
+                        alert(`${winnerName} wins!`)
                     }
                 }
                 break;
@@ -79,7 +67,7 @@ function BoardGame(boardGameEnteries){
         }
     }
 
-    return winner()
+
 
 }
 
@@ -89,10 +77,19 @@ const domManipulation = function(){
     const startGameBtn = document.querySelector(".startGame")
     const inputPlayer1 = document.querySelector(".player1name")
     const inputPlayer2 = document.querySelector(".player2name")
+    let item1Counter = 0
+    let item2Counter = 0
+    let item3Counter = 0
+    let item4Counter = 0
+    let item5Counter = 0
+    let item6Counter = 0
+    let item7Counter = 0
+    let item8Counter = 0
+    let item9Counter = 0
     let player1Name = ''
     let player2Name = ''
-    let item1Counter, item2Counter, item3Counter, item4Counter, item5Counter, item6Counter, item7Counter, item8Counter, item9Counter = 0
-
+  let r = ''
+    
 
     startGameBtn.addEventListener("click",(event)=>{
         event.preventDefault()
@@ -194,12 +191,14 @@ const domManipulation = function(){
         boardGame.appendChild(item9)
 
         let boardGameEnteries = [[],[],[],[],[],[],[],[]]
+        r = BoardGame(boardGameEnteries)
+        console.log(r)
 
         function eventListeners(){
             let w = ''
             let count = 0
             let declare = ''
-            let item1Counter = 0
+
             item1.addEventListener("click",()=>{ 
                 ++count
                 if(item1Counter === 0){
@@ -220,7 +219,7 @@ const domManipulation = function(){
             }
             })
 
-            let item2Counter = 0
+     
             item2.addEventListener("click",()=>{
                 ++count
                 if(item2Counter === 0){
@@ -241,7 +240,7 @@ const domManipulation = function(){
             }
             })
 
-            let item3Counter = 0
+          
             item3.addEventListener("click",()=>{
                 ++count
                 if(item3Counter === 0){
@@ -262,7 +261,7 @@ const domManipulation = function(){
                 }
             })
 
-            let item4Counter = 0
+         
             item4.addEventListener("click",()=>{
                 ++count
                 if(item4Counter === 0){
@@ -282,7 +281,7 @@ const domManipulation = function(){
                 }
             })
 
-            let item5Counter = 0
+       
             item5.addEventListener("click",()=>{
                 ++count
                 if(item5Counter === 0){
@@ -302,7 +301,7 @@ const domManipulation = function(){
                 }
             })
 
-            let item6Counter = 0
+      
             item6.addEventListener("click",()=>{
                 ++count 
                 if(item6Counter === 0){
@@ -322,7 +321,7 @@ const domManipulation = function(){
                 }
             })
 
-            let item7Counter = 0
+         
             item7.addEventListener("click",()=>{
                 ++count
                 if(item7Counter === 0){
@@ -343,7 +342,7 @@ const domManipulation = function(){
             })
 
 
-            let item8Counter = 0
+     
             item8.addEventListener("click",()=>{
                 ++count
                 if(item8Counter === 0){
@@ -362,7 +361,7 @@ const domManipulation = function(){
                     }
                 }
             })
-            let item9Counter = 0
+        
             item9.addEventListener("click",()=>{
                 ++count
                 if(item9Counter === 0){
