@@ -160,13 +160,17 @@ startGameBtn.addEventListener("click",()=>{
             item8Counter = 0
             item9Counter = 0
             count = 0
-            BoardGameArray = [[],[],[],[],[],[],[],[]]
+            BoardGameArray = [[],[],[],[],[],[],[],[],[]]
             player2NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #77d4e0,0 0 20px #77d4e0,0 0 10px #77d4e0,0 0 30px #77d4e0,0 0 5px #77d4e0'
             player1NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #03fc49,0 0 20px #03fc49,0 0 10px #03fc49,0 0 30px #03fc49,0 0 5px #03fc49'
+            // player1NameDisplay.textContent = player1Name
+            // player2NameDisplay.textContent = player2Name
         }
 
          createGameBtn.addEventListener("click",()=>{
             clear()
+            player1NameDisplay.textContent = player1Name
+            player2NameDisplay.textContent = player2Name
         })
             
             item1.addEventListener("click",()=>{
@@ -401,48 +405,6 @@ function Game(player1name,player2name){
 
 }
 
-        // function gameLogic(player1name,player2name,j,count,item,BoardGameArray,player1NameDisplay,player2NameDisplay,clear){
-        //     let player1Name = player1name
-        //     let player2Name = player2name
-        //     let player1Points = 0
-        //     let player2Points = 0
-
-        //     if(count % 2 === 0){
-        //         player1NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #03fc49,0 0 20px #03fc49,0 0 10px #03fc49,0 0 30px #03fc49,0 0 5px #03fc49'
-        //         player2NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #77d4e0,0 0 20px #77d4e0,0 0 10px #77d4e0,0 0 30px #77d4e0,0 0 5px #77d4e0'
-        //         item.textContent = 'O'
-        //         choiceArray = ['O',player2Name]
-        //         BoardGameArray.splice(j,1,choiceArray)
-        //         decideWinner(BoardGameArray)
-        //         let winner = decideWinner(BoardGameArray)
-        //         console.log(winner)
-        //         if(winner === true){
-        //             ++player2Points
-        //             console.log(`These are ${player2Name}'s points: ${player2Points}`)
-        //             alert("The next round begins")
-        //             clear()
-        //         }
-        //     }
-        //     else if(count % 2 !== 0){
-        //         player2NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #03fc49,0 0 20px #03fc49,0 0 10px #03fc49,0 0 30px #03fc49,0 0 5px #03fc49'
-        //         player1NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #77d4e0,0 0 20px #77d4e0,0 0 10px #77d4e0,0 0 30px #77d4e0,0 0 5px #77d4e0'
-        //         item.textContent = 'X'
-        //         choiceArray = ['X',player1Name]
-        //         BoardGameArray.splice(j,1,choiceArray)
-        //         decideWinner(BoardGameArray)
-        //         let winner = decideWinner(BoardGameArray)
-        //         console.log(winner)
-        //         if(winner === true){
-        //             ++player1Points
-        //             console.log(`These are ${player1Name}'s points: ${player1Points}`)
-        //             alert("The next around begins")
-        //             clear()
-        //         }
-        //     }
-        
-        //     console.log(BoardGameArray)
-        
-        // }
 
      function slices(player1Name,player2Name,BoardGameArray,j,count,item,clear,player1NameDisplay,player2NameDisplay){
         let choiceArray = []
@@ -467,14 +429,16 @@ function Game(player1name,player2name){
         console.log(winner)
         if(winner === true){
             if (count % 2 === 0){
-                alert(`${player2Name} wins!`)
-                ++player2Points
+                player2NameDisplay.textContent = `${player2Name} is the winner!`
+
             }
             else{
-                alert(`${player1Name} wins!`)
-                ++player1Points
+                player1NameDisplay.textContent = `${player1Name} is the winner!`
+
             }
-            clear()
+                clear()
+            
+            
         }
         console.log(BoardGameArray)
     }
