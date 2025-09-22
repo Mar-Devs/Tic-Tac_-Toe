@@ -126,8 +126,39 @@ startGameBtn.addEventListener("click",()=>{
         item9.setAttribute('id','item9')
         boardGame.appendChild(item9)
 
+        function popUp(name,clear,winner){
+            const popUp = document.createElement("div")
+            popUp.className = 'popUp'
+            body.appendChild(popUp)
+
+
+            const popUph2 = document.createElement("h2")
+            if(winner === true){
+            popUph2.textContent = `The winner is ${name}!`
+            }
+            else{
+                popUph2.textContent = 'Tie :('
+            }
+            popUp.appendChild(popUph2)
+
+            const popUpimg = document.createElement("img")
+            popUpimg.src = 'assets/icons/close_41dp_FFFFFF_FILL0_wght400_GRAD0_opsz40.svg'
+            popUpimg.setAttribute = ('alt', 'x-icon')
+            popUp.appendChild(popUpimg)
+
+            popUpimg.addEventListener("click",()=>{
+                popUp.remove()
+                clear
+            })
+
+
+        }
+
+       
+
         function event(){
             let BoardGameArray = [[],[],[],[],[],[],[],[],[]]
+            let tieCheck = []
             let count = 0
             let item1Counter = 0
             let item2Counter = 0
@@ -139,6 +170,14 @@ startGameBtn.addEventListener("click",()=>{
             let item8Counter = 0
             let item9Counter = 0
     
+            function tieChecker(j){
+                let isTie
+                tieCheck.push(j)
+                if(tieCheck.length === 9){
+                    isTie = true
+                }
+                return isTie
+            }
 
             let clear  = function(){
             item1P.textContent = ''
@@ -163,8 +202,7 @@ startGameBtn.addEventListener("click",()=>{
             BoardGameArray = [[],[],[],[],[],[],[],[],[]]
             player2NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #77d4e0,0 0 20px #77d4e0,0 0 10px #77d4e0,0 0 30px #77d4e0,0 0 5px #77d4e0'
             player1NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #03fc49,0 0 20px #03fc49,0 0 10px #03fc49,0 0 30px #03fc49,0 0 5px #03fc49'
-            // player1NameDisplay.textContent = player1Name
-            // player2NameDisplay.textContent = player2Name
+            tieCheck = []
         }
 
          createGameBtn.addEventListener("click",()=>{
@@ -178,7 +216,8 @@ startGameBtn.addEventListener("click",()=>{
                     ++item1Counter
                     ++count
                       let j = 0
-                    slices(player1Name,player2Name,BoardGameArray,j,count,item1P,clear,player1NameDisplay,player2NameDisplay)
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item1P,clear,player1NameDisplay,player2NameDisplay,tieChecker)
+                    
 
 }
             })
@@ -188,7 +227,7 @@ startGameBtn.addEventListener("click",()=>{
                     ++item2Counter
                     ++count
                      let j = 1
-                    slices(player1Name,player2Name,BoardGameArray,j,count,item2P,clear,player1NameDisplay,player2NameDisplay)
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item2P,clear,player1NameDisplay,player2NameDisplay,tieChecker)
                      
 }
             })
@@ -198,7 +237,7 @@ startGameBtn.addEventListener("click",()=>{
                     ++item3Counter
                     ++count
                      let j = 2
-                    slices(player1Name,player2Name,BoardGameArray,j,count,item3P,clear,player1NameDisplay,player2NameDisplay)
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item3P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp)
 }
             })
 
@@ -207,7 +246,7 @@ startGameBtn.addEventListener("click",()=>{
                     ++item4Counter
                     ++count
                      let j = 3
-                    slices(player1Name,player2Name,BoardGameArray,j,count,item4P,clear,player1NameDisplay,player2NameDisplay)
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item4P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp)
 }
             })
 
@@ -216,7 +255,7 @@ startGameBtn.addEventListener("click",()=>{
                     ++item5Counter
                     ++count
                      let j = 4
-                    slices(player1Name,player2Name,BoardGameArray,j,count,item5P,clear,player1NameDisplay,player2NameDisplay)
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item5P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp)
 }
             })
 
@@ -225,7 +264,7 @@ startGameBtn.addEventListener("click",()=>{
                     ++item6Counter
                     ++count
                      let j = 5
-                    slices(player1Name,player2Name,BoardGameArray,j,count,item6P,clear,player1NameDisplay,player2NameDisplay)
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item6P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp)
 }
             })
 
@@ -234,7 +273,7 @@ startGameBtn.addEventListener("click",()=>{
                     ++item7Counter
                     ++count
                      let j = 6
-                    slices(player1Name,player2Name,BoardGameArray,j,count,item7P,clear,player1NameDisplay,player2NameDisplay)
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item7P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp)
 }
             })
 
@@ -243,7 +282,7 @@ startGameBtn.addEventListener("click",()=>{
                     ++item8Counter
                     ++count
                      let j = 7
-                    slices(player1Name,player2Name,BoardGameArray,j,count,item8P,clear,player1NameDisplay,player2NameDisplay)
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item8P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp)
 }
             })
 
@@ -252,7 +291,7 @@ startGameBtn.addEventListener("click",()=>{
                     ++item9Counter
                     ++count
                      let j = 8
-                    slices(player1Name,player2Name,BoardGameArray,j,count,item9P,clear,player1NameDisplay,player2NameDisplay)
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item9P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp)
 }
             })
 
@@ -406,10 +445,11 @@ function Game(player1name,player2name){
 }
 
 
-     function slices(player1Name,player2Name,BoardGameArray,j,count,item,clear,player1NameDisplay,player2NameDisplay){
+     function slices(player1Name,player2Name,BoardGameArray,j,count,item,clear,player1NameDisplay,player2NameDisplay,isTie,popUp){
         let choiceArray = []
         let player1Points = 0
         let player2Points = 0
+        let tied = isTie(j)
         if(count % 2 === 0){
             player1NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #03fc49,0 0 20px #03fc49,0 0 10px #03fc49,0 0 30px #03fc49,0 0 5px #03fc49'
             player2NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #77d4e0,0 0 20px #77d4e0,0 0 10px #77d4e0,0 0 30px #77d4e0,0 0 5px #77d4e0'
@@ -429,16 +469,19 @@ function Game(player1name,player2name){
         console.log(winner)
         if(winner === true){
             if (count % 2 === 0){
-                player2NameDisplay.textContent = `${player2Name} is the winner!`
+                popUp(player2Name,clear(),winner)
 
             }
-            else{
-                player1NameDisplay.textContent = `${player1Name} is the winner!`
+            else if(count % 2 !== 0){
+                popUp(player1Name,clear(),winner)
 
             }
-                clear()
+                
             
             
+        }
+        else if(tied === true && winner === false){
+            popUp(null,clear(),winner)
         }
         console.log(BoardGameArray)
     }
