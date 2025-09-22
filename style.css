@@ -6,6 +6,7 @@
     --large-font-size: 3rem;
     --neon-text-color: #77d4e0;
     --neon-header-color: #4a8b94;
+    --neon-player-color: #03fc49;
 }
 
 body{
@@ -301,11 +302,38 @@ button{
     0 0 5px #9ad4db,
     0 0 5px #9ad4db,
 
-    0 0 20px var(--neon-text-color),
-    0 0 20px var(--neon-text-color),
-    0 0 10px var(--neon-text-color),
-    0 0 30px var(--neon-text-color),
-    0 0 5px var(--neon-text-color);
+    0 0 20px var(--neon-player-color),
+    0 0 20px var(--neon-player-color),
+    0 0 10px var(--neon-player-color),
+    0 0 30px var(--neon-player-color),
+    0 0 5px var(--neon-player-color);
+     /* animation: flickerDisplay 1.5s   infinite alternate ; */
+}
+
+@keyframes flickerDisplay{
+        100% {
+    text-shadow:
+      0 0 4px white,
+      0 0 4px white,
+      0 0 4px white,
+      0 0 10px var(--neon-player-color),
+      0 0 10px var(--neon-player-color),
+      0 0 5px var(--neon-player-color),
+      0 0 2.5px var(--neon-player-color),
+      0 0 7px var(--neon-player-color);
+  }
+ 0% {
+    text-shadow:
+    0 0 5px #bdf0cc,
+    0 0 5px #bdf0cc,
+    0 0 5px #bdf0cc,
+
+    0 0 20px var(--neon-player-color),
+    0 0 20px var(--neon-player-color),
+    0 0 10px var(--neon-player-color),
+    0 0 30px var(--neon-player-color),
+    0 0 5px var(--neon-player-color);
+  }
 }
 
 .player2NameDisplay{

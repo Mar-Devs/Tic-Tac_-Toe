@@ -14,7 +14,7 @@ startGameBtn.addEventListener("click",()=>{
         let player2name = player2Input.value
         
         landingPageContainer.remove()
-        createGrid(player1name,player2name)
+        Game(player1name,player2name)
 })
 
 
@@ -23,7 +23,6 @@ startGameBtn.addEventListener("click",()=>{
     function playersInfo(player1name,player2name){
         let player1Name = player1name
         let player1 = new Player(player1Name,0)
-        alert(player1Name)
 
         let player2Name = player2name
         let player2 = new Player(player2Name,0)
@@ -35,7 +34,6 @@ startGameBtn.addEventListener("click",()=>{
 
     function createGrid(player1name,player2name){
         let {player1Name , player2Name} = playersInfo(player1name,player2name)
-        console.log(player1Name)
 
 
         const body = document.querySelector("body")
@@ -127,96 +125,235 @@ startGameBtn.addEventListener("click",()=>{
         item9.className = 'item'
         item9.setAttribute('id','item9')
         boardGame.appendChild(item9)
+
+        function event(){
+            let BoardGameArray = [[],[],[],[],[],[],[],[],[]]
+            let count = 0
+            let item1Counter = 0
+            let item2Counter = 0
+            let item3Counter = 0
+            let item4Counter = 0
+            let item5Counter = 0
+            let item6Counter = 0
+            let item7Counter = 0
+            let item8Counter = 0
+            let item9Counter = 0
+    
+
+            let clear  = function(){
+            item1P.textContent = ''
+            item2P.textContent = ''
+            item3P.textContent = ''
+            item4P.textContent = ''
+            item5P.textContent = ''
+            item6P.textContent = ''
+            item7P.textContent = ''
+            item8P.textContent = ''
+            item9P.textContent = ''
+            item1Counter = 0
+            item2Counter = 0
+            item3Counter = 0
+            item4Counter = 0
+            item5Counter = 0
+            item6Counter = 0
+            item7Counter = 0
+            item8Counter = 0
+            item9Counter = 0
+            count = 0
+            BoardGameArray = [[],[],[],[],[],[],[],[]]
+            player2NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #77d4e0,0 0 20px #77d4e0,0 0 10px #77d4e0,0 0 30px #77d4e0,0 0 5px #77d4e0'
+            player1NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #03fc49,0 0 20px #03fc49,0 0 10px #03fc49,0 0 30px #03fc49,0 0 5px #03fc49'
+        }
+
+         createGameBtn.addEventListener("click",()=>{
+            clear()
+        })
+            
+            item1.addEventListener("click",()=>{
+                if(item1Counter === 0){
+                    ++item1Counter
+                    ++count
+                      let j = 0
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item1P,clear,player1NameDisplay,player2NameDisplay)
+
+}
+            })
+
+            item2.addEventListener("click",()=>{
+                if(item2Counter === 0){
+                    ++item2Counter
+                    ++count
+                     let j = 1
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item2P,clear,player1NameDisplay,player2NameDisplay)
+                     
+}
+            })
+
+            item3.addEventListener("click",()=>{
+                if(item3Counter === 0){
+                    ++item3Counter
+                    ++count
+                     let j = 2
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item3P,clear,player1NameDisplay,player2NameDisplay)
+}
+            })
+
+            item4.addEventListener("click",()=>{
+                if(item4Counter === 0){
+                    ++item4Counter
+                    ++count
+                     let j = 3
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item4P,clear,player1NameDisplay,player2NameDisplay)
+}
+            })
+
+            item5.addEventListener("click",()=>{
+                if(item5Counter === 0){
+                    ++item5Counter
+                    ++count
+                     let j = 4
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item5P,clear,player1NameDisplay,player2NameDisplay)
+}
+            })
+
+            item6.addEventListener("click",()=>{
+                if(item6Counter === 0){
+                    ++item6Counter
+                    ++count
+                     let j = 5
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item6P,clear,player1NameDisplay,player2NameDisplay)
+}
+            })
+
+            item7.addEventListener("click",()=>{
+                if(item7Counter === 0){
+                    ++item7Counter
+                    ++count
+                     let j = 6
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item7P,clear,player1NameDisplay,player2NameDisplay)
+}
+            })
+
+            item8.addEventListener("click",()=>{
+                if(item8Counter === 0){
+                    ++item8Counter
+                    ++count
+                     let j = 7
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item8P,clear,player1NameDisplay,player2NameDisplay)
+}
+            })
+
+            item9.addEventListener("click",()=>{
+                if(item9Counter === 0){
+                    ++item9Counter
+                    ++count
+                     let j = 8
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item9P,clear,player1NameDisplay,player2NameDisplay)
+}
+            })
+
+            let winner = decideWinner(BoardGameArray)
+            if(winner === true){
+                alert("We have a winner!")
+            }
+        
+        }
+
+        event()
+
+        return {player1Name , player2Name}
     }
 
-//     let decideWinner = function(BoardGameArray){
-//         let arrname = ''
-//         let gameOver = false
-        
+    let decideWinner = function(BoardGameArray){
+        let arrname = ''
+        let gameOver = false
+    
 
-//                 if(BoardGameArray?.[0][0] && BoardGameArray?.[1][0] && BoardGameArray?.[2][0]){
-//                     if(BoardGameArray[0][0] === BoardGameArray[1][0] && BoardGameArray[1][0] === BoardGameArray[2][0]){
-//                         arrname = BoardGameArray[0][1]
-//                         gameOver = true
-//                         }
-//                     }
-//                 if(BoardGameArray?.[3][0] && BoardGameArray?.[4][0]  && BoardGameArray?.[5][0]){
-//                     if(BoardGameArray[3][0] === BoardGameArray[4][0] && BoardGameArray[4][0] === BoardGameArray[5][0]){
-//                         arrname = BoardGameArray[3][0]
-//                         gameOver = true
-//                     }
-//                 }
-//                 if(BoardGameArray?.[0][0] && BoardGameArray?.[3][0] && BoardGameArray?.[6][0]){
-//                     if(BoardGameArray[0][0] === BoardGameArray[3][0] && BoardGameArray[3][0] === BoardGameArray[6][0]){
-//                         arrname = BoardGameArray[0][0]
-//                         gameOver = true
-//                     }
-//                 }
-//                 if(BoardGameArray?.[2][0] && BoardGameArray?.[4][0] && BoardGameArray?.[6][0]){
-//                     if(BoardGameArray[2][0] === BoardGameArray[4][0] && BoardGameArray[4][0] === BoardGameArray[6][0]){
-//                         arrname = BoardGameArray[2][0]
-//                         gameOver = true
-//                     }
-//                 }
-//                 if(BoardGameArray?.[1][0] && BoardGameArray?.[4][0] && BoardGameArray?.[7][0]){
-//                     if(BoardGameArray[1][0] === BoardGameArray [4][0] && BoardGameArray[4][0] === BoardGameArray[7][0]){
-//                         arrname = BoardGameArray[1][0]
-//                         gameOver = true
-//                     }
-//                 }
-//                 if(BoardGameArray?.[0][0] && BoardGameArray?.[4][0] && BoardGameArray?.[8][0]){
-//                     if(BoardGameArray[0][0] === BoardGameArray[4][0] && BoardGameArray[4][0] === BoardGameArray[8][0] ){
-//                         arrname = BoardGameArray[0][0]
-//                         gameOver = true
-//                     }
-//                 }
-//                 if(BoardGameArray?.[2][0] && BoardGameArray?.[5][0] && BoardGameArray?.[8][0]){
-//                     if(BoardGameArray[2][0] === BoardGameArray[5][0] && BoardGameArray[5][0] === BoardGameArray[8][0]){
-//                         arrname = BoardGameArray[2][2]
-//                         gameOver = true
-//                     }
-//                 }
-//                 if(BoardGameArray?.[6][0] && BoardGameArray?.[7][0] && BoardGameArray?.[8][0]){
-//                     if(BoardGameArray[6][0] === BoardGameArray[7][0] && BoardGameArray[7][0] === BoardGameArray[8][0]){
-//                         arrname = BoardGameArray[6][0]
-//                         gameOver = true
-//                     }
-//                 }
-            
+                if(BoardGameArray?.[0][0] && BoardGameArray?.[1][0] && BoardGameArray?.[2][0]){
+                    if(BoardGameArray?.[0][0] === BoardGameArray?.[1][0] && BoardGameArray?.[1][0] === BoardGameArray?.[2][0]){
+                        arrname = BoardGameArray?.[0][1]
+                        gameOver = true
+                        }
+                    }
+
+ 
+                if(BoardGameArray?.[3][0] && BoardGameArray?.[4][0]  && BoardGameArray?.[5][0]){
+                    if(BoardGameArray?.[3][0] === BoardGameArray?.[4][0] && BoardGameArray?.[4][0] === BoardGameArray?.[5][0]){
+                        arrname = BoardGameArray?.[3][0]
+                        gameOver = true
+                    }
+                }
+
+                if(BoardGameArray?.[0][0] && BoardGameArray?.[3][0] && BoardGameArray?.[6][0]){
+                    if(BoardGameArray?.[0][0] === BoardGameArray?.[3][0] && BoardGameArray?.[3][0] === BoardGameArray?.[6][0]){
+                        arrname = BoardGameArray?.[0][0]
+                        gameOver = true
+                    }
+                }
+                if(BoardGameArray?.[2][0] && BoardGameArray?.[4][0] && BoardGameArray?.[6][0]){
+                    if(BoardGameArray?.[2][0] === BoardGameArray?.[4][0] && BoardGameArray?.[4][0] === BoardGameArray?.[6][0]){
+                        arrname = BoardGameArray?.[2][0]
+                        gameOver = true
+                    }
+                }
+
+                if(BoardGameArray?.[1][0] && BoardGameArray?.[4][0] && BoardGameArray?.[7][0]){
+                    if(BoardGameArray?.[1][0] === BoardGameArray?.[4][0] && BoardGameArray?.[4][0] === BoardGameArray?.[7][0]){
+                        arrname = BoardGameArray?.[1][0]
+                        gameOver = true
+                    }
+                }
+
+                if(BoardGameArray?.[0][0] && BoardGameArray?.[4][0] && BoardGameArray?.[8][0]){
+                    if(BoardGameArray?.[0][0] === BoardGameArray?.[4][0] && BoardGameArray?.[4][0] === BoardGameArray?.[8][0] ){
+                        arrname = BoardGameArray?.[0][0]
+                        gameOver = true
+                    }
+                }
+                if(BoardGameArray?.[2][0] && BoardGameArray?.[5][0] && BoardGameArray?.[8][0]){
+                    if(BoardGameArray?.[2][0] === BoardGameArray?.[5][0] && BoardGameArray?.[5][0] === BoardGameArray?.[8][0]){
+                        arrname = BoardGameArray?.[2][2]
+                        gameOver = true
+                    }
+                }
+                if(BoardGameArray?.[6][0] && BoardGameArray?.[7][0] && BoardGameArray?.[8][0]){
+                    if(BoardGameArray?.[6][0] === BoardGameArray?.[7][0] && BoardGameArray?.[7][0] === BoardGameArray?.[8][0]){
+                        arrname = BoardGameArray?.[6][0]
+                        gameOver = true
+                    }
+                }
   
-//     return gameOver
+    return gameOver
 
-// }
+}
 
-// function Game(){
-//     let createArray = (function(){
-//         let BoardGameArray = [[],[],[],[],[],[],[],[]]
-//         let player1Name = playersInfo.player1.name
-//         let player2Name = playersInfo.player2.name
-
-//         return {player1Name,player2Name, BoardGameArray}
-//         })()
+function Game(player1name,player2name){
+    let createArray = (function(){
+        let {player1Name , player2Name} = createGrid(player1name,player2name)
+        return {player1Name,player2Name}
+        })()   
         
-
-//         let player1Name = createArray.player1Name
-//         let player2Name = createArray.player2Name
-//         let BoardGameArray = createArray.BoardGameArray
-
-//         let gameLogic = function(){
+//          function gameLogic(j,item){
 //             let choice = ''
 //             let choiceArray = []
-//             let player1Points = playersInfo.player1.points
-//             let player2Points = playersInfo.player2.points
+//             let player1Points = 0
+//             let player2Points = 0
+
+//             let player1Name = createArray.player1Name
+//             let player2Name = createArray.player2Name
+//             let BoardGameArray = createArray.BoardGameArray
 
 //             for(let i = 0; i < 1 ; i++){
 //             for(let i = 1; i < 4; i++){
 //                 alert(`This is round: ${i}`)
 //                 BoardGameArray = [[],[],[],[],[],[],[],[],[],[]]
-//                     for(let i = 1; i < 10; i++){
+//                     for(let i = 1; i < 10; i++){  
 //                           if(i % 2 === 0){
-//                           choice = prompt(`${player2Name}'s turn:`)
+//                             alert(`It's ${player2Name} turn`)
+//                            choice = 'O'
+//                            item.textContent = 'O'
 //                           choiceArray = [choice,player2Name]
-//                           BoardGameArray.splice((i-1),1,choiceArray)
+//                           BoardGameArray.splice((j),1,choiceArray)
 //                           decideWinner(BoardGameArray)
 //                           let gameOver = decideWinner(BoardGameArray)
 //                             if(gameOver === true){
@@ -226,9 +363,11 @@ startGameBtn.addEventListener("click",()=>{
 //                               }
 //                            }
 //                          else if(i % 2 !== 0){
-//                             choice = prompt(`${player1Name}'s turn:`)
+//                             alert(`It's ${player1Name} turn`)
+//                             item.textContent = 'X'
+//                             choice = 'X'
 //                             choiceArray = [choice,player1Name]
-//                             BoardGameArray.splice((i-1),1,choiceArray)
+//                             BoardGameArray.splice((j),1,choiceArray)
 //                             decideWinner(BoardGameArray)
 //                             let gameOver = decideWinner(BoardGameArray)
 //                               if(gameOver === true){
@@ -238,8 +377,6 @@ startGameBtn.addEventListener("click",()=>{
 //                                   }
 
 //                            }
-                          
-//                         }
    
 //                 if(player1Points > player2Points){
 //                     console.log(`The winner is ${player1Name}`)
@@ -247,6 +384,7 @@ startGameBtn.addEventListener("click",()=>{
 //                 else if(player2Points > player2Points){
 //                     console.log(`The winner is ${player2Name}`)
 //                 }
+//             }
 //     }
 //     if(player1Points > player2Points){
 //                     console.log(`The final winner is ${player1Name}`)
@@ -254,15 +392,89 @@ startGameBtn.addEventListener("click",()=>{
 //                 else if(player2Points > player2Points){
 //                     console.log(`The final winner is ${player2Name}`)
 //                 }
+    
 // }
-//     return {player1Points, player2Points}
+
 //         }
-//         gameLogic()
-// }
 
+        
 
-//     Game()
+}
 
+        // function gameLogic(player1name,player2name,j,count,item,BoardGameArray,player1NameDisplay,player2NameDisplay,clear){
+        //     let player1Name = player1name
+        //     let player2Name = player2name
+        //     let player1Points = 0
+        //     let player2Points = 0
 
+        //     if(count % 2 === 0){
+        //         player1NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #03fc49,0 0 20px #03fc49,0 0 10px #03fc49,0 0 30px #03fc49,0 0 5px #03fc49'
+        //         player2NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #77d4e0,0 0 20px #77d4e0,0 0 10px #77d4e0,0 0 30px #77d4e0,0 0 5px #77d4e0'
+        //         item.textContent = 'O'
+        //         choiceArray = ['O',player2Name]
+        //         BoardGameArray.splice(j,1,choiceArray)
+        //         decideWinner(BoardGameArray)
+        //         let winner = decideWinner(BoardGameArray)
+        //         console.log(winner)
+        //         if(winner === true){
+        //             ++player2Points
+        //             console.log(`These are ${player2Name}'s points: ${player2Points}`)
+        //             alert("The next round begins")
+        //             clear()
+        //         }
+        //     }
+        //     else if(count % 2 !== 0){
+        //         player2NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #03fc49,0 0 20px #03fc49,0 0 10px #03fc49,0 0 30px #03fc49,0 0 5px #03fc49'
+        //         player1NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #77d4e0,0 0 20px #77d4e0,0 0 10px #77d4e0,0 0 30px #77d4e0,0 0 5px #77d4e0'
+        //         item.textContent = 'X'
+        //         choiceArray = ['X',player1Name]
+        //         BoardGameArray.splice(j,1,choiceArray)
+        //         decideWinner(BoardGameArray)
+        //         let winner = decideWinner(BoardGameArray)
+        //         console.log(winner)
+        //         if(winner === true){
+        //             ++player1Points
+        //             console.log(`These are ${player1Name}'s points: ${player1Points}`)
+        //             alert("The next around begins")
+        //             clear()
+        //         }
+        //     }
+        
+        //     console.log(BoardGameArray)
+        
+        // }
 
- 
+     function slices(player1Name,player2Name,BoardGameArray,j,count,item,clear,player1NameDisplay,player2NameDisplay){
+        let choiceArray = []
+        let player1Points = 0
+        let player2Points = 0
+        if(count % 2 === 0){
+            player1NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #03fc49,0 0 20px #03fc49,0 0 10px #03fc49,0 0 30px #03fc49,0 0 5px #03fc49'
+            player2NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #77d4e0,0 0 20px #77d4e0,0 0 10px #77d4e0,0 0 30px #77d4e0,0 0 5px #77d4e0'
+            item.textContent = 'O'
+            choiceArray = ['O',player2Name]
+            BoardGameArray.splice(j,1,choiceArray)
+        }
+        else if(count % 2 !== 0){
+            player2NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #03fc49,0 0 20px #03fc49,0 0 10px #03fc49,0 0 30px #03fc49,0 0 5px #03fc49'
+            player1NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #77d4e0,0 0 20px #77d4e0,0 0 10px #77d4e0,0 0 30px #77d4e0,0 0 5px #77d4e0'
+            item.textContent = 'X'
+          choiceArray = ['X',player1Name]
+          BoardGameArray.splice(j,1,choiceArray)
+        }
+        console.log(BoardGameArray)
+        let winner = decideWinner(BoardGameArray)
+        console.log(winner)
+        if(winner === true){
+            if (count % 2 === 0){
+                alert(`${player2Name} wins!`)
+                ++player2Points
+            }
+            else{
+                alert(`${player1Name} wins!`)
+                ++player1Points
+            }
+            clear()
+        }
+        console.log(BoardGameArray)
+    }
