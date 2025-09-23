@@ -40,7 +40,6 @@ startGameBtn.addEventListener("click",()=>{
 
     function createGrid(player1name,player2name,roundCount){
         let [player1Name , player2Name, roundCountTaken] = playersInfo(player1name,player2name,roundCount)
-        alert(roundCountTaken)
 
 
         const body = document.querySelector("body")
@@ -147,7 +146,7 @@ startGameBtn.addEventListener("click",()=>{
             
             roundCount = Number(roundCount)
             if(round > roundCount){
-                roundCountVisual.textContent = 'Game Over'
+                roundCountVisual.textContent = 'Game Over! (Please Restart Game)'
             }
             else if((roundCount - round) === 0){
                 roundCountVisual.textContent = 'This is the final round'
