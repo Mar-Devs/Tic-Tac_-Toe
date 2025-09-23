@@ -410,6 +410,10 @@ button{
 
 @media (max-width: 960px) and (min-width: 620px){
 
+    body{
+        overflow: hidden ;
+    }
+
     .tic-tac-toe-h1{
         font-size: var(--small-font-size);
     }
@@ -496,8 +500,10 @@ button{
 }
 
 .popUp{
-    height: 300px;
-    width: 300px;
+    height: 280px;
+    width: 280px;
+    grid-row: 3/4;
+    grid-column: 3/4;
 }
 
 .popUp h1{

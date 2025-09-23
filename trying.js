@@ -216,7 +216,7 @@ startGameBtn.addEventListener("click",()=>{
                     ++item1Counter
                     ++count
                       let j = 0
-                    slices(player1Name,player2Name,BoardGameArray,j,count,item1P,clear,player1NameDisplay,player2NameDisplay,tieChecker)
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item1P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp)
                     
 
 }
@@ -227,7 +227,7 @@ startGameBtn.addEventListener("click",()=>{
                     ++item2Counter
                     ++count
                      let j = 1
-                    slices(player1Name,player2Name,BoardGameArray,j,count,item2P,clear,player1NameDisplay,player2NameDisplay,tieChecker)
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item2P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp)
                      
 }
             })
@@ -294,11 +294,6 @@ startGameBtn.addEventListener("click",()=>{
                     slices(player1Name,player2Name,BoardGameArray,j,count,item9P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp)
 }
             })
-
-            let winner = decideWinner(BoardGameArray)
-            if(winner === true){
-                alert("We have a winner!")
-            }
         
         }
 
