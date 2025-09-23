@@ -1,6 +1,7 @@
-function Player(name , points){
+function Player(name , points, rounds){
     this.name = name
     this.points = points
+    this.rounds  = this.rounds
 }
 
 
@@ -8,32 +9,38 @@ function Player(name , points){
 const player1Input = document.querySelector(".player1name")
 const player2Input = document.querySelector(".player2name")
 const landingPageContainer = document.querySelector(".landingPageContainer")
+const roundCountInput = document.querySelector(".roundCount")
 const startGameBtn = document.querySelector(".startGame")
 startGameBtn.addEventListener("click",()=>{
         let player1name = player1Input.value
         let player2name = player2Input.value
+        let roundCount = roundCountInput.value
         
         landingPageContainer.remove()
-        Game(player1name,player2name)
+        Game(player1name,player2name,roundCount)
 })
 
 
 
 
-    function playersInfo(player1name,player2name){
+    function playersInfo(player1name,player2name,roundCount){
+        let roundIteration = roundCount
+
+
         let player1Name = player1name
-        let player1 = new Player(player1Name,0)
+        let player1 = new Player(player1Name,0,roundIteration)
 
         let player2Name = player2name
-        let player2 = new Player(player2Name,0)
+        let player2 = new Player(player2Name,0,roundIteration)
 
-        return {player1Name,player2Name}
+        return [player1Name,player2Name,roundIteration]
     
     }
 
 
-    function createGrid(player1name,player2name){
-        let {player1Name , player2Name} = playersInfo(player1name,player2name)
+    function createGrid(player1name,player2name,roundCount){
+        let [player1Name , player2Name, roundCountTaken] = playersInfo(player1name,player2name,roundCount)
+        alert(roundCountTaken)
 
 
         const body = document.querySelector("body")
@@ -41,6 +48,11 @@ startGameBtn.addEventListener("click",()=>{
         body.style.gridTemplateColumns = 'repeat(5,1fr)'
         body.style.gridTemplateRows = 'repeat(5,1fr)'
         body.style.justifyItems = 'center'
+
+        const roundCountVisual = document.createElement("p")
+        roundCountVisual.className = 'roundCountP'
+        roundCountVisual.textContent = `This is round 1`
+        body.appendChild(roundCountVisual)
 
         const player1NameDisplay = document.createElement("p")
         player1NameDisplay.className = 'player1NameDisplay'
@@ -126,17 +138,34 @@ startGameBtn.addEventListener("click",()=>{
         item9.setAttribute('id','item9')
         boardGame.appendChild(item9)
 
-        function popUp(name,clear,winner){
+        function popUp(name,clear,winner,winChecker,winCount){
+            let round = (winCount.length) + 1
+            let gameOver = winChecker(winCount)
             const popUp = document.createElement("div")
             popUp.className = 'popUp'
             body.appendChild(popUp)
+            
+            roundCount = Number(roundCount)
+            if(round > roundCount){
+                roundCountVisual.textContent = 'Game Over'
+            }
+            else if((roundCount - round) === 0){
+                roundCountVisual.textContent = 'This is the final round'
+            }
+            else{
+                roundCountVisual.textContent = `This is round ${round}`
+            }
 
 
             const popUph2 = document.createElement("h2")
-            if(winner === true){
-            popUph2.textContent = `The winner is ${name}!`
+            if(winner === true && gameOver === true){
+            popUph2.textContent = `The final winner is ${name}!`
             }
-            else{
+            else if(winner === true && gameOver === false){
+                popUph2.textContent = `Round ${round-1}'s winner is ${name}!`
+
+            }
+            else if(winner === false){
                 popUph2.textContent = 'Tie :('
             }
             popUp.appendChild(popUph2)
@@ -154,6 +183,7 @@ startGameBtn.addEventListener("click",()=>{
 
         }
 
+
        
 
         function event(){
@@ -169,6 +199,16 @@ startGameBtn.addEventListener("click",()=>{
             let item7Counter = 0
             let item8Counter = 0
             let item9Counter = 0
+            let winCount = []
+
+            function winChecker(winCount){
+                let gameOver = false
+                roundCount = Number(roundCount)
+                if(winCount.length === roundCount){
+                    gameOver = true
+                }
+                return gameOver
+            }
     
             function tieChecker(j){
                 let isTie
@@ -202,13 +242,15 @@ startGameBtn.addEventListener("click",()=>{
             BoardGameArray = [[],[],[],[],[],[],[],[],[]]
             player2NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #77d4e0,0 0 20px #77d4e0,0 0 10px #77d4e0,0 0 30px #77d4e0,0 0 5px #77d4e0'
             player1NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #03fc49,0 0 20px #03fc49,0 0 10px #03fc49,0 0 30px #03fc49,0 0 5px #03fc49'
-            tieCheck = []
+            tieCheck = []    
         }
 
          createGameBtn.addEventListener("click",()=>{
             clear()
             player1NameDisplay.textContent = player1Name
             player2NameDisplay.textContent = player2Name
+            winCount = []
+            roundCountVisual.textContent = 'This is round 1'
         })
             
             item1.addEventListener("click",()=>{
@@ -216,8 +258,8 @@ startGameBtn.addEventListener("click",()=>{
                     ++item1Counter
                     ++count
                       let j = 0
-                    slices(player1Name,player2Name,BoardGameArray,j,count,item1P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp)
-                    
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item1P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp,winCount,winChecker)
+
 
 }
             })
@@ -227,8 +269,8 @@ startGameBtn.addEventListener("click",()=>{
                     ++item2Counter
                     ++count
                      let j = 1
-                    slices(player1Name,player2Name,BoardGameArray,j,count,item2P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp)
-                     
+                     slices(player1Name,player2Name,BoardGameArray,j,count,item2P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp,winCount,winChecker)
+
 }
             })
 
@@ -237,8 +279,9 @@ startGameBtn.addEventListener("click",()=>{
                     ++item3Counter
                     ++count
                      let j = 2
-                    slices(player1Name,player2Name,BoardGameArray,j,count,item3P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp)
-}
+                     slices(player1Name,player2Name,BoardGameArray,j,count,item3P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp,winCount,winChecker)
+
+                }
             })
 
             item4.addEventListener("click",()=>{
@@ -246,7 +289,7 @@ startGameBtn.addEventListener("click",()=>{
                     ++item4Counter
                     ++count
                      let j = 3
-                    slices(player1Name,player2Name,BoardGameArray,j,count,item4P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp)
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item4P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp,winCount,winChecker)
 }
             })
 
@@ -255,7 +298,7 @@ startGameBtn.addEventListener("click",()=>{
                     ++item5Counter
                     ++count
                      let j = 4
-                    slices(player1Name,player2Name,BoardGameArray,j,count,item5P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp)
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item5P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp,winCount,winChecker)
 }
             })
 
@@ -264,7 +307,7 @@ startGameBtn.addEventListener("click",()=>{
                     ++item6Counter
                     ++count
                      let j = 5
-                    slices(player1Name,player2Name,BoardGameArray,j,count,item6P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp)
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item6P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp,winCount,winChecker)
 }
             })
 
@@ -273,7 +316,7 @@ startGameBtn.addEventListener("click",()=>{
                     ++item7Counter
                     ++count
                      let j = 6
-                    slices(player1Name,player2Name,BoardGameArray,j,count,item7P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp)
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item7P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp,winCount,winChecker)
 }
             })
 
@@ -282,7 +325,7 @@ startGameBtn.addEventListener("click",()=>{
                     ++item8Counter
                     ++count
                      let j = 7
-                    slices(player1Name,player2Name,BoardGameArray,j,count,item8P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp)
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item8P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp,winCount,winChecker)
 }
             })
 
@@ -291,7 +334,7 @@ startGameBtn.addEventListener("click",()=>{
                     ++item9Counter
                     ++count
                      let j = 8
-                    slices(player1Name,player2Name,BoardGameArray,j,count,item9P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp)
+                    slices(player1Name,player2Name,BoardGameArray,j,count,item9P,clear,player1NameDisplay,player2NameDisplay,tieChecker,popUp,winCount,winChecker)
 }
             })
         
@@ -299,18 +342,20 @@ startGameBtn.addEventListener("click",()=>{
 
         event()
 
-        return {player1Name , player2Name}
+        return {player1Name , player2Name, roundCountTaken}
     }
 
-    let decideWinner = function(BoardGameArray){
+    function decideWinner(BoardGameArray){
         let arrname = ''
         let gameOver = false
+        winCount = 0
     
 
                 if(BoardGameArray?.[0][0] && BoardGameArray?.[1][0] && BoardGameArray?.[2][0]){
                     if(BoardGameArray?.[0][0] === BoardGameArray?.[1][0] && BoardGameArray?.[1][0] === BoardGameArray?.[2][0]){
                         arrname = BoardGameArray?.[0][1]
                         gameOver = true
+                        ++winCount
                         }
                     }
 
@@ -365,85 +410,20 @@ startGameBtn.addEventListener("click",()=>{
 
 }
 
-function Game(player1name,player2name){
+function Game(player1name,player2name,roundCount){
     let createArray = (function(){
-        let {player1Name , player2Name} = createGrid(player1name,player2name)
-        return {player1Name,player2Name}
+        let {player1Name , player2Name, roundCountTaken} = createGrid(player1name,player2name,roundCount)
+        return {player1Name,player2Name, roundCountTaken}
         })()   
-        
-//          function gameLogic(j,item){
-//             let choice = ''
-//             let choiceArray = []
-//             let player1Points = 0
-//             let player2Points = 0
-
-//             let player1Name = createArray.player1Name
-//             let player2Name = createArray.player2Name
-//             let BoardGameArray = createArray.BoardGameArray
-
-//             for(let i = 0; i < 1 ; i++){
-//             for(let i = 1; i < 4; i++){
-//                 alert(`This is round: ${i}`)
-//                 BoardGameArray = [[],[],[],[],[],[],[],[],[],[]]
-//                     for(let i = 1; i < 10; i++){  
-//                           if(i % 2 === 0){
-//                             alert(`It's ${player2Name} turn`)
-//                            choice = 'O'
-//                            item.textContent = 'O'
-//                           choiceArray = [choice,player2Name]
-//                           BoardGameArray.splice((j),1,choiceArray)
-//                           decideWinner(BoardGameArray)
-//                           let gameOver = decideWinner(BoardGameArray)
-//                             if(gameOver === true){
-//                                 ++player2Points
-//                                 console.log(player2Points)
-//                                   break
-//                               }
-//                            }
-//                          else if(i % 2 !== 0){
-//                             alert(`It's ${player1Name} turn`)
-//                             item.textContent = 'X'
-//                             choice = 'X'
-//                             choiceArray = [choice,player1Name]
-//                             BoardGameArray.splice((j),1,choiceArray)
-//                             decideWinner(BoardGameArray)
-//                             let gameOver = decideWinner(BoardGameArray)
-//                               if(gameOver === true){
-//                                    ++player1Points
-//                                       console.log(player1Points)
-//                                       break
-//                                   }
-
-//                            }
-   
-//                 if(player1Points > player2Points){
-//                     console.log(`The winner is ${player1Name}`)
-//                 }
-//                 else if(player2Points > player2Points){
-//                     console.log(`The winner is ${player2Name}`)
-//                 }
-//             }
-//     }
-//     if(player1Points > player2Points){
-//                     console.log(`The final winner is ${player1Name}`)
-//                 }
-//                 else if(player2Points > player2Points){
-//                     console.log(`The final winner is ${player2Name}`)
-//                 }
     
-// }
-
-//         }
-
-        
-
 }
 
 
-     function slices(player1Name,player2Name,BoardGameArray,j,count,item,clear,player1NameDisplay,player2NameDisplay,isTie,popUp){
+     function slices(player1Name,player2Name,BoardGameArray,j,count,item,clear,player1NameDisplay,player2NameDisplay,isTie,popUp,winCount,winChecker){
         let choiceArray = []
         let player1Points = 0
         let player2Points = 0
+        let playerArray = []
         let tied = isTie(j)
         if(count % 2 === 0){
             player1NameDisplay.style.textShadow = '0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 5px #9ad4db, 0 0 20px #03fc49,0 0 20px #03fc49,0 0 10px #03fc49,0 0 30px #03fc49,0 0 5px #03fc49'
@@ -464,11 +444,17 @@ function Game(player1name,player2name){
         console.log(winner)
         if(winner === true){
             if (count % 2 === 0){
-                popUp(player2Name,clear(),winner)
+                ++player2Points
+                playerArray = [player2Points,player2Name]
+                winCount.push(playerArray)
+                popUp(player2Name,clear(),winner,winChecker,winCount)
 
             }
             else if(count % 2 !== 0){
-                popUp(player1Name,clear(),winner)
+                ++player1Points
+                playerArray = [player1Points,player1Name]
+                winCount.push(playerArray)
+                popUp(player1Name,clear(),winner,winChecker,winCount)
 
             }
                 
@@ -476,7 +462,9 @@ function Game(player1name,player2name){
             
         }
         else if(tied === true && winner === false){
-            popUp(null,clear(),winner)
+            popUp(null,clear(),winner,winChecker,winCount)
         }
         console.log(BoardGameArray)
+
+        return [player1Points,player2Points]
     }
